@@ -1,0 +1,124 @@
+@import 'base/reset.less';
+@import 'iconfont.less';
+@import 'common.less';
+@import 'layout.less';
+
+.list-container{
+    width: 100%;
+    height: 100%;
+    .bg-cont{
+        width: 24%;
+        position: fixed;
+        height: 100%;
+        z-index:-1;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .main{
+        width: 76%;
+        padding: 80px 40px 10px;
+        .category-names{
+            .clearfix;
+            a{
+                background: #f8f8f8;
+                border-radius: 5px;
+                border: 1px solid #e5e5e5;
+                padding: 4px 16px;
+                white-space: nowrap;
+                font-size: 0.8em;
+                font-family: "Source Code Pro", monospace, serif;
+                margin-top: 10px;
+                font-weight: bold;
+                font-size: 20px;
+                display: block;
+                float: left;
+                margin: 20px 10px;
+            }
+            margin-bottom: 40px;
+        }
+        .note-list .cate{
+            margin-bottom: 60px;
+            position: relative;
+            h2{
+                font-size: 18px;
+                font-style: italic;
+                border-bottom: 1px dashed #d9d9d9;
+                padding-bottom: 30px;
+                .open-in-note{
+                    color: #4094c7;
+                }
+            }
+            li{
+                list-style: none;
+                position: relative;
+                width: 100%;
+                padding-right: 2px;
+                padding-bottom: 17px;
+                margin: 0 0 17px;
+                border-bottom: 1px dashed #d9d9d9;
+                box-sizing: border-box;
+                word-wrap: break-word;
+                line-height: 20px;
+                .img-wrapper{
+                    width:100px;
+                    height: 100px;
+                    img{
+                        border-radius: 4px;
+                        border: 1px solid #eeeeee;
+                        width:100%;
+                        height: 100%;
+                    }
+                }
+                .list-top{
+                    margin: 8px 0;
+                    font-size: 12px;
+                    .time{
+                        color: #717171;
+                    }
+                }
+                .list-middle{
+                    width: 100%;
+                    position: relative;
+                    .title{
+                        font-size: 18px;
+                        font-weight: bold;
+                        line-height: 1.5;
+                    }
+                }
+                .list-footer{
+                    margin-top: 12px;
+                    font-size: 12px;
+                    font-weight: normal;
+                    line-height: 20px;
+                    color:#999;
+                    a{
+                        display: inline;
+                    }
+                }
+                a{
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .list-container{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 978px) and (min-width: 0) {
+    .list-container{
+        .bg-cont{
+            display: none;
+        }
+    }
+    .main{
+        width: 100% !important;
+        float: none;
+    }
+}

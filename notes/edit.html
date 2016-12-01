@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Edit Page - 胡柯写笔记的地方</title>
+    <link rel="stylesheet" href="/assets/css/edit.css">
+    <script src="/assets/js/lib/template.min.js"></script>
+    <script src="/assets/js/lib/jquery-3.1.1.min.js"></script>
+    <script src="/assets/minjs/common.min.js"></script>
+</head>
+<body>
+    <header>
+        <a href="/" class="home">
+            <i class="iconfont icon-home"></i>
+        </a>
+        <div class="nav-wrapper">
+            <ul class="m-title-list clearfix">
+                <li class="small-device">
+                  <i class="iconfont icon-menu"></i>
+                  <ul></ul>
+                </li>
+                <li class="compose"><a href="/notes/edit.html" class="iconfont icon-compose">笔记</a></li>
+                <li class="upload"><a href="/drive" class="iconfont icon-upload">云盘</a></li>
+                <li class="resume"><a href="/resume" class="iconfont icon-resume">简历</a></li>
+                <li class="theme">
+                    <a href="javascript:(0)" class="iconfont icon-theme">主题</a>
+                    <ul class="theme-choose-box">
+                        <li class="fudan"><span class="iconfont icon-dagou"><span class="txt">鹅蛋青</span></span></li>
+                        <li class="mianzhi"><span class="iconfont"><span class="txt">白色</span></span></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="stack">
+        <div class="row-fluid clearfix">
+            <section class="aside col-3">
+                <button class="new">
+                    <a id="new" href="javascript:void(0)"> + Root Folder</a>
+                </button>
+                <button class="newfolder">
+                    <a id="newfolder" href="javascript:void(0)"> + Folder</a>
+                </button>
+                <ul class="nav-list"></ul>
+            </section>
+            <section class="middle col-3">
+                <button class="newfile">
+                    <a id="newfile" href="javascript:void(0)"> + File</a>
+                </button>
+                <ul class="file-list"></ul>
+            </section>
+            <section class="main col-6">
+                <form class="note-form">
+                    <input type="text" class="title" value="无标题文章">
+                    <ul class="tool-bar clearfix">
+                        <span class="saved-tip">已保存</span>
+                        <li class="g-fr">
+                            <i class="iconfont icon-save"></i>
+                        </li>
+                        <li class="g-fr">
+                            <i class="iconfont icon-column"></i>
+                        </li>
+                        <li class="g-fr">
+                            <i class="iconfont icon-display"></i>
+                        </li>
+                    </ul>
+                    <textarea></textarea>
+                </form>
+            </section>
+        </div>
+    </div>
+    <div class="move-box">
+        <div class="header">
+            <span class="iconfont icon-form-close"></span>
+            <span class="header-txt">Move To</span>
+        </div>
+        <div class="file-info">
+            <span class="iconfont"></span>
+            <span class="file-txt"></span>
+        </div>
+        <div class="content">
+            <div class="cont-header">Move To</div>
+            <div class="cont-display">
+                <ul class="move-list"></ul>
+            </div>
+        </div>
+        <div class="move-btns">
+            <button class="btn cancel" style="margin-left: 0px;">Cancel</button>
+            <button disabled="true" class="btn btn-info confirm disabled" style="margin-left: 5px;">Confirm</button>
+        </div>
+    </div>
+    <div class="move-mask"></div>
+    <div class="noty-box">
+        <div class="noty-msg">Are you sure to delete this note?</div>
+        <div class="noty-btns">
+            <button class="btn cancel" style="margin-left: 0px;">Cancel</button>
+            <button class="btn btn-info confirm" style="margin-left: 5px;">Confirm</button>
+        </div>
+    </div>
+    <div class="noty-mask"></div>
+    <footer>
+        <section class="m-contact-me">
+            CONTACT ME &nbsp;&nbsp;&nbsp;
+            <a href="https://github.com/hu-ke" class="iconfont icon-github"></a>
+            <a href="http://sg.linkedin.com/pub/ke-hu/10a/34a/832" class="iconfont icon-linkedin">
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100008908393907" class="iconfont icon-Facebook"></a>
+            <a href="mailto:hu-ke@hotmail.com" class="iconfont icon-email"></a>
+            <a href="tel:13616512778" class="iconfont icon-mobile"></a>
+            <span class="iconfont icon-qq">
+                <div class="icon-box">
+                    <img src="/assets/images/qr-qq.png" alt="">
+                </div>
+            </span>
+            <span class="iconfont icon-weixin">
+                <div class="icon-box">
+                    <img src="/assets/images/qr-wechat.png" alt="">
+                </div>
+            </span>
+        </section>
+        <section class="m-copyright">
+            <a style="color:#545454;text-decoration: none;" href="http://www.miitbeian.gov.cn/">浙ICP备16043253号</a>  &nbsp;&nbsp;&nbsp; © 2016 Hu Ke.
+        </section>
+    </footer>
+</body>
+<script type="text/html" id="tpl-movebox-list">
+    {{each notes as value i}}
+    {{if !value.isfile}}
+    <li class="list-item" data-list-item="{{value.noteId}}">
+        <div class="item" data-noteid="{{value.noteId}}">
+            <div class="a-wrapper"
+            {{if value.isfile}}data-isfile="1"{{else}}data-isfile="0"{{/if}}>
+                <a href="javascript:void(0)">
+                    {{if value.isfile}}
+                    <i class="iconfont icon-file"></i>
+                    {{else}}
+                    <i class="iconfont icon-folder"></i>
+                    {{/if}}
+                    <span class="note-name">{{value.title}}</span>
+                </a>
+            </div>
+        </div>
+        {{if value}}
+        <ul class="sub-move-list">{{include 'tpl-movebox-list' value}}</ul>
+        {{/if}}
+    </li>
+    {{/if}}
+    {{/each}}
+</script>
+<script type="text/html" id="tpl-folder-list">
+    {{each notes as value i}}
+    {{if !value.isfile}}
+    <li class="list-item" data-list-item="{{value.noteId}}">
+        <div class="item">
+            <div class="a-wrapper" data-noteid="{{value.noteId}}"
+            {{if value.isfile}}data-isfile="1"{{else}}data-isfile="0"{{/if}}>
+                <a href="javascript:void(0)">
+                    {{if value.isfile}}
+                    <i class="iconfont icon-file"></i>
+                    {{else}}
+                    <i class="iconfont icon-folder"></i>
+                    {{/if}}
+                    <span class="non-editable">{{value.title}}</span>
+                    <span class="editable"><input type="text" value="{{value.title}}" /></span>
+                </a>
+                <a href="javascript:void(0)" class="edit">
+                    <i class="iconfont icon-config"></i>
+                </a>
+            </div>
+            <ul class="dropdown-menu">
+                <li class="rename" data-noteid="{{value.noteId}}"><i class="iconfont icon-modify"></i>&nbsp;&nbsp;rename</li>
+                <li class="divider"></li>
+                <li class="del" data-noteid="{{value.noteId}}"><i class="iconfont icon-delete"></i>&nbsp;&nbsp;delete</li>
+                <li class="divider"></li>
+                <li class="moveto" {{if value.isfile}}data-isfile="1"{{else}}data-isfile="0"{{/if}} data-notetitle="{{value.title}}" data-noteid="{{value.noteId}}"><i class="iconfont icon-moveto"></i>&nbsp;&nbsp;move to</li>
+            </ul>
+        </div>
+        {{if value}}
+        <ul class="sub-nav-list">{{include 'tpl-folder-list' value}}</ul>
+        {{/if}}
+    </li>
+    {{/if}}
+    {{/each}}
+</script>
+<script type="text/html" id="tpl-file-list">
+    {{each notes as value i}}
+    <li class="list-item" data-list-item="{{value.noteId}}">
+        <div class="item">
+            <div class="a-wrapper" data-noteid="{{value.noteId}}"
+            {{if value.isfile}}data-isfile="1"{{else}}data-isfile="0"{{/if}}>
+                <a href="javascript:void(0)">
+                    {{if value.isfile}}
+                    <i class="iconfont icon-file"></i>
+                    {{else}}
+                    <i class="iconfont icon-folder"></i>
+                    {{/if}}
+                    <span class="non-editable">{{value.title}}</span>
+                    <span class="editable"><input type="text" value="{{value.title}}" /></span>
+                </a>
+                <a href="javascript:void(0)" class="edit">
+                    <i class="iconfont icon-config"></i>
+                </a>
+            </div>
+            <ul class="dropdown-menu">
+                <li class="rename" data-noteid="{{value.noteId}}"><i class="iconfont icon-modify"></i>&nbsp;&nbsp;rename</li>
+                <li class="divider"></li>
+                <li class="del" data-noteid="{{value.noteId}}"><i class="iconfont icon-delete"></i>&nbsp;&nbsp;delete</li>
+                <li class="divider"></li>
+                <li class="moveto" {{if value.isfile}}data-isfile="1"{{else}}data-isfile="0"{{/if}} data-notetitle="{{value.title}}" data-noteid="{{value.noteId}}"><i class="iconfont icon-moveto"></i>&nbsp;&nbsp;move to</li>
+            </ul>
+        </div>
+        {{if value}}
+        <ul class="sub-nav-list">{{include 'tpl-file-list' value}}</ul>
+        {{/if}}
+    </li>
+    {{/each}}
+</script>
+<!-- for PC -->
+<script type="text/html" id = "tpl-nav">
+    {{each notes as value i}}
+    <li class="note-item" data-index="{{i}}">
+        <a href="/notes/notelist.html?folderId={{value.noteId}}">{{value.title}}</a>
+    </li>
+    {{/each}}
+</script>
+<!-- for small device -->
+<script type="text/html" id = "tpl-nav-small">
+    {{each notes as value i}}
+    <li data-index="{{i}}" data-url="/notes/notelist.html?folderId={{value.noteId}}">
+        <a>{{value.title}}</a>
+    </li>
+    {{/each}}
+</script>
+<script type="text/html" id="tpl-box-wrapper">
+    <div class="box-wrapper">
+    {{each notes as v k}}
+        <div class="box" data-index={{k}}>
+            <div class="sec-wrapper g-fl">
+                {{each v.notes as value i}}
+                <section class="g-fl col-4">
+                    <h4><a href="/notes/notelist.html?folderId={{v.noteId}}#{{value.noteId}}">{{value.title}}</a></h4>
+                    {{each value.notes as v1 i1}}
+                        <a href="/notes/notedetail.html?fileId={{v1.noteId}}">{{v1.title}}</a>
+                    {{/each}}
+                    <!--如果一列达到上限11个 -->
+                    {{if value.notes.length == 11}}
+                    <a class="more" href="/notes/notelist.html?folderId={{v.noteId}}#{{value.noteId}}">查看更多 >></a>
+                    {{/if}}
+                </section>
+                {{/each}}
+            </div>
+            <div class="more-col g-fl">
+                <a href="/notes/notelist.html?folderId={{v.noteId}}">
+                更多分类</a>
+            </div>
+        </div>
+    {{/each}}
+    </div>
+</script>
+<script src="/assets/minjs/header.min.js"></script>
+<script src="/assets/minjs/footer.min.js"></script>
+<script src="/assets/minjs/edit.min.js"></script>
+</html>

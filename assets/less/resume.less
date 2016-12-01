@@ -1,0 +1,180 @@
+@import 'iconfont.less';
+@import 'helper/_variable.less';
+@import 'helper/_mixin.less';
+@import 'component/_button.less';
+@import 'common.less';
+@import 'layout.less';
+
+.main-wrapper{
+    width: 82%;
+    margin: 0 auto;
+    margin-top: 80px;
+    .resume-download{
+        text-align: right;
+        line-height: 1.6;
+        padding-right: 30px;
+    }
+    .resume-main{
+        @a: #fe7676;
+        @b: #ffa04b;
+        @c: #ff7a4b;
+        @d: #ff4a70;
+        @e: #ff62a1;
+        @f: #ff4b4b;
+        width: 100%;
+        .work{
+            .title{
+                background-color: @a;
+            }
+        }
+        .education{
+            .title{
+                background-color: @b;
+            }
+        }
+        .skill{
+            .title{
+                background-color: @c;
+            }
+            .skill-cont{
+                .tag,.tag-desc{
+                    text-indent: 20px;
+                }
+                .tag{
+                    &:before{
+                        content: '- '
+                    }
+                }
+            }
+        }
+        .education,.work,.skill{
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)!important;
+            border-radius: 2px;
+            padding: 50px 0 20px 30px;
+            position: relative;
+            background-color: white;
+            margin-bottom: 30px;
+            h3.title{
+                font-weight: normal;
+                font-size: 16px;
+                position: absolute;
+                padding: 8px;
+                left: 20px;
+                top: -36px;
+                color:white;
+                &:before{
+                    border-bottom: 20px solid #661e2d;
+                    border-left: 12px solid transparent;
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left:-12px;
+                }
+            }
+            p.part{
+                border-left: 2px solid rgb(23, 103, 133);
+                padding: 30px 0 50px 30px;
+                position: relative;
+                .logo.one2one{
+                    border-radius: 4px;
+                    border:1px solid #fa624a;
+                    position: absolute;
+                    right: 90px;
+                    top:-30px;
+                    width: 60px;
+                    height: 60px;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .logo.tagit{
+                    border-radius: 4px;
+                    position: absolute;
+                    right: -60px;
+                    top:-30px;
+                    img{
+                        width: 60%;
+                        height: 100%;
+                    }
+                }
+                .logo.nus{
+                    border-radius: 4px;
+                    position: absolute;
+                    right: 30px;
+                    top:-60px;
+                    img{
+                        width: 180px;
+                    }
+                }
+                .logo.zjut{
+                    border-radius: 4px;
+                    position: absolute;
+                    right: 80px;
+                    top:-40px;
+                    img{
+                        width: 110px;
+                    }
+                }
+                .time{
+                    position: absolute;
+                    font-weight: normal;
+                    font-size: 12px;
+                    top:-8px;
+                    left:0;
+                    padding-left:30px;
+                    color:#546e7a;
+                    &:before{
+                        position: absolute;
+                        border-radius: 50%;
+                        width: 20px;
+                        height: 20px;
+                        left: -11px;
+                        top: -4px;
+                        background-color: rgb(23, 103, 133);
+                        content: '';
+                    }
+                }
+                .content{
+                    line-height: 1.6;
+                    position: relative;
+                    top:16px;
+                    .learned{
+                        line-height: 1.8;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 978px) and (min-width: 0) {
+    .main-wrapper{
+        width: 100%;
+        .resume-main {
+            .education,.work,.skill{
+                padding-left: 10px;
+                p.part{
+                    padding-left: 10px;
+                    .logo.one2one{
+                        right: 50px;
+                    }
+                    .logo.tagit{
+                        width: 200px;
+                        right: -50px;
+                        top:-20px;
+                    }
+                    .logo.nus{
+                        top:-40px;
+                        img{
+                            width: 120px;
+                        }
+                    }
+                    .logo.zjut{
+                        right: 30px;
+                        top: -30px;
+                    }
+                }
+            }
+        }
+    }
+}

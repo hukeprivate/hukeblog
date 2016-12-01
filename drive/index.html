@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>云盘 - 胡柯写笔记的地方</title>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="bookmark" href="/favicon.ico"/>
+
+    <link rel="stylesheet" href="/assets/css/drive.css">
+    <script src="/assets/js/lib/template.min.js"></script>
+    <script src="/assets/js/lib/jquery-3.1.1.min.js"></script>
+    <script src="/assets/minjs/common.min.js"></script>
+    <script src="/assets/js/font/iconfont-drive.js"></script>
+</head>
+<body>
+    <header>
+        <a href="/" class="home">
+            <i class="iconfont icon-home"></i>
+        </a>
+        <div class="nav-wrapper">
+            <ul class="m-title-list clearfix">
+                <li class="small-device">
+                  <i class="iconfont icon-menu"></i>
+                  <ul></ul>
+                </li>
+                <li class="compose"><a href="/notes/edit.html" class="iconfont icon-compose">笔记</a></li>
+                <li class="upload"><a href="/drive" class="iconfont icon-upload">云盘</a></li>
+                <li class="resume"><a href="/resume" class="iconfont icon-resume">简历</a></li>
+                <li class="theme">
+                    <a href="javascript:(0)" class="iconfont icon-theme">主题</a>
+                    <ul class="theme-choose-box">
+                        <li class="fudan"><span class="iconfont icon-dagou"><span class="txt">鹅蛋青</span></span></li>
+                        <li class="mianzhi"><span class="iconfont"><span class="txt">白色</span></span></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <section class="main-wrapper">
+        <section class="toolbar">
+            <em>click icon to download</em>
+            <button class="btn btn-info btn-edit">Edit</button>
+        </section>
+        <section class="files-area">
+            <ul class="file-list clearfix"></ul>
+        </section>
+        <section class="upload-area">
+            <form id= "uploadForm">
+              <p>File to be uploaded: <input type="file" name="file"/></ p>
+              <button class="btn btn-info upload">Upload</button>
+            </form>
+        </section>
+    </section>
+    <footer>
+        <section class="m-contact-me">
+            CONTACT ME &nbsp;&nbsp;&nbsp;
+            <a href="https://github.com/hu-ke" class="iconfont icon-github"></a>
+            <a href="http://sg.linkedin.com/pub/ke-hu/10a/34a/832" class="iconfont icon-linkedin">
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100008908393907" class="iconfont icon-Facebook"></a>
+            <a href="mailto:hu-ke@hotmail.com" class="iconfont icon-email"></a>
+            <a href="tel:13616512778" class="iconfont icon-mobile"></a>
+            <span class="iconfont icon-qq">
+                <div class="icon-box">
+                    <img src="/assets/images/qr-qq.png" alt="">
+                </div>
+            </span>
+            <span class="iconfont icon-weixin">
+                <div class="icon-box">
+                    <img src="/assets/images/qr-wechat.png" alt="">
+                </div>
+            </span>
+        </section>
+        <section class="m-copyright">
+            <a style="color:#545454;text-decoration: none;" href="http://www.miitbeian.gov.cn/">浙ICP备16043253号</a>  &nbsp;&nbsp;&nbsp; © 2016 Hu Ke.
+        </section>
+    </footer>
+</body>
+<script type="text/html" id = "tpl-file-list">
+    {{each filelist as value i}}
+    <li class="file-item g-fl" data-filename={{value.name}}>
+        {{if value.ext == 'zip' || value.ext == 'rar'}}
+        <i class="iconfont icon-close"></i>
+        <div class="icon-wrapper" data-filename="{{value.name}}">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-zip"></use>
+            </svg>
+        </div>
+        {{else if value.ext == 'pdf'}}
+        <i class="iconfont icon-close"></i>
+        <div class="icon-wrapper" data-filename="{{value.name}}">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-pdf"></use>
+            </svg>
+        </div>
+        {{else if value.ext == 'png' || value.ext == 'jpg' || value.ext == 'jpeg' || value.ext == 'bmp' || value.ext == 'gif' || value.ext == 'pcx'}}
+        <i class="iconfont icon-close"></i>
+        <div class="icon-wrapper" data-filename="{{value.name}}">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-file-png"></use>
+            </svg>
+        </div>
+        {{else if value.ext == 'pptx' || value.ext == 'ppt'}}
+        <i class="iconfont icon-close"></i>
+        <div class="icon-wrapper" data-filename="{{value.name}}">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-PPT"></use>
+            </svg>
+        </div>
+        {{else if value.ext == 'doc' || value.ext == 'docx'}}
+        <i class="iconfont icon-close"></i>
+        <div class="icon-wrapper" data-filename="{{value.name}}">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-Word"></use>
+            </svg>
+        </div>
+        {{else if value.ext == 'js'}}
+        <i class="iconfont icon-close"></i>
+        <div class="icon-wrapper" data-filename="{{value.name}}">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-js"></use>
+            </svg>
+        </div>
+        {{else if value.ext == 'css'}}
+        <i class="iconfont icon-close"></i>
+        <div class="icon-wrapper" data-filename="{{value.name}}">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-css"></use>
+            </svg>
+        </div>
+        {{else if value.ext == 'html'}}
+        <i class="iconfont icon-close"></i>
+        <div class="icon-wrapper" data-filename="{{value.name}}">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-html"></use>
+            </svg>
+        </div>
+        {{else}}
+        <i class="iconfont icon-close"></i>
+        <div class="icon-wrapper" data-filename="{{value.name}}">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-svg-file"></use>
+            </svg>
+        </div>
+        {{/if}}
+        <span class="txt">{{value.name}}</span>
+    </li>
+    {{/each}}
+</script>
+<!-- for PC -->
+<script type="text/html" id = "tpl-nav">
+    {{each notes as value i}}
+    <li class="note-item" data-index="{{i}}">
+        <a href="/notes/notelist.html?folderId={{value.noteId}}">{{value.title}}</a>
+    </li>
+    {{/each}}
+</script>
+<!-- for small device -->
+<script type="text/html" id = "tpl-nav-small">
+    {{each notes as value i}}
+    <li data-index="{{i}}" data-url="/notes/notelist.html?folderId={{value.noteId}}">
+        <a>{{value.title}}</a>
+    </li>
+    {{/each}}
+</script>
+<script type="text/html" id="tpl-box-wrapper">
+    <div class="box-wrapper">
+    {{each notes as v k}}
+        <div class="box" data-index={{k}}>
+            <div class="sec-wrapper g-fl">
+                {{each v.notes as value i}}
+                <section class="g-fl col-4">
+                    <h4><a href="/notes/notelist.html?folderId={{v.noteId}}#{{value.noteId}}">{{value.title}}</a></h4>
+                    {{each value.notes as v1 i1}}
+                        <a href="/notes/notedetail.html?fileId={{v1.noteId}}">{{v1.title}}</a>
+                    {{/each}}
+                    <!--如果一列达到上限11个 -->
+                    {{if value.notes.length == 11}}
+                    <a class="more" href="/notes/notelist.html?folderId={{v.noteId}}#{{value.noteId}}">查看更多 >></a>
+                    {{/if}}
+                </section>
+                {{/each}}
+            </div>
+            <div class="more-col g-fl">
+                <a href="/notes/notelist.html?folderId={{v.noteId}}">
+                更多分类</a>
+            </div>
+        </div>
+    {{/each}}
+    </div>
+</script>
+<script src="/assets/minjs/header.min.js"></script>
+<script src="/assets/minjs/footer.min.js"></script>
+<script src="/assets/minjs/drive.min.js"></script>
+</html>

@@ -1,0 +1,442 @@
+@import 'base/reset.less';
+@import 'helper/_variable.less';
+@import 'helper/_mixin.less';
+@import 'component/_button.less';
+@import 'common.less';
+@import 'layout.less';
+@import 'iconfont.less';
+
+
+.stack{
+    margin-top: 50px;
+    .row-fluid{
+        width: 100%;
+        .aside,.middle{
+            position: relative;
+            margin-left: 0;
+            .new,.newfile,.newfolder{
+                margin-top: 20px;
+                margin-bottom: 10px;
+                font-style: italic;
+                font-size: 14px;
+                font-weight: normal;
+                line-height: 20px;
+                #new,#newfile,#newfolder{
+                    margin: 0 20px;
+                }
+            }
+            .nav-list,.file-list{
+                overflow-y: auto;
+                overflow-x: hidden;
+                font-style: italic;
+                font-size: 15px;
+                font-weight: normal;
+                line-height: 20px;
+                padding-left: 15px;
+                padding-right: 15px;
+                margin-bottom: 0;
+                height: 100%;
+                span {
+                    position: absolute;
+                    left: 34px;
+                    right: 40px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    padding-left: 20px;
+                }
+                li.list-item{
+                    list-style: none;
+                    position: relative;
+                    line-height: 36px;
+                    .item{
+                        line-height: inherit;
+                        font-size: inherit;
+                        position: relative;
+                        .a-wrapper{
+                            line-height: inherit;
+                            font-size: inherit;
+                            position: relative;
+                            a{
+                                .icon-folder{
+                                    font-size: 26px;
+                                }
+                                .editable{
+                                    display: none;
+                                    input{
+                                        font-size: 15px;
+                                        font-style: italic;
+                                        font-weight: normal;
+                                        outline: initial;
+                                    }
+                                    input[type=text], textarea {
+                                      -webkit-transition: all 0.30s ease-in-out;
+                                      -moz-transition: all 0.30s ease-in-out;
+                                      -ms-transition: all 0.30s ease-in-out;
+                                      -o-transition: all 0.30s ease-in-out;
+                                      outline: none;
+                                      padding: 3px 0px 3px 3px;
+                                      margin: 5px 1px 3px 0px;
+                                      border: 1px solid #DDDDDD;
+                                    }
+
+                                    input[type=text]:focus, textarea:focus {
+                                      box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+                                      padding: 3px 0px 3px 3px;
+                                      margin: 5px 1px 3px 0px;
+                                      border: 1px solid rgba(81, 203, 238, 1);
+                                    }
+                                }
+
+                            }
+                            a.edit{
+                                position: absolute;
+                                right: 0;
+                                top:0;
+                                display: none;
+                            }
+                        }
+                    }
+
+                    ul.dropdown-menu{
+                        display: none;
+                        left: auto;
+                        right: -15px;
+                        overflow: inherit;
+                        font-size: 14px;
+                        font-style: normal;
+                        margin-top: 10px;
+                        border-color: #d9d9d9;
+
+                        position: absolute;
+                        top: 100%;
+                        z-index: 1000;
+                        min-width: 160px;
+                        padding: 5px 0;
+                        margin: 2px 0 0;
+                        list-style: none;
+                        background-color: white;
+                        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+                        border:#e5e5e5;
+                        border-radius: 4px;
+                        li{
+                            position: relative;
+                            line-height: 27px;
+                            padding-left: 20px;
+                            cursor: pointer;
+                            &:hover{
+                                background-color: #4f4f4f;
+                                color: white;
+                            }
+                        }
+
+                        .divider{
+                            height: 1px;
+                            margin: 9px 1px;
+                            overflow: hidden;
+                            background-color: #e5e5e5;
+                            border-bottom: 1px solid #e5e5e5;
+                        }
+
+                        .iconfont{
+                            font-size: 14px;
+                        }
+                    }
+                    .sub-nav-list{
+                        padding-left: 15px;
+                    }
+
+                    .a-wrapper.active{
+                        a{
+                            padding: 3px 15px;
+                            margin-left: -15px;
+                            margin-right: -15px;
+                            display: block;
+                            line-height: 30px;
+                            font-style: italic;
+                            font-size: 15px;
+                            font-weight: normal;
+                            background-color:#e78170;
+                            .note-name{
+                                position: relative;
+                                height: 30px;
+                            }
+                            .icon-folder,.name,.icon-config,.non-editable,.editable{
+                                color:white;
+                            }
+
+                            &.edit{
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+            .file-list{
+                li.list-item{
+                    .a-wrapper.active{
+                        a{
+                            background-color: #d1c091;
+                            color: #eeeeee;
+                            text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+                        }
+                    }
+                }
+            }
+        }
+        .middle{
+            position: relative;
+            border-left: 1px solid #d9d9d9;
+            border-right: 1px solid #d9d9d9;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .main{
+            position: relative;
+            padding: 20px 0 0 0;
+            overflow-y: auto;
+            overflow-x: hidden;
+            form{
+                width: 100%;
+                margin: 0;
+                font-size: 16px;
+                font-weight: normal;
+                line-height: 25px;
+                input.title{
+                    height: 70px;
+                    width: 100%;
+                    padding: 10px 20px 10px 30px;
+                    margin-bottom: 0;
+                    border-bottom: 1px solid #d9d9d9;
+                    font-size: 30px;
+                    font-weight: normal;
+                    line-height: 30px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    border-radius: 0;
+                    box-shadow: none;
+                }
+                .tool-bar{
+                    margin: 0;
+                    list-style-type: none;
+                    background-color: #dedede;
+                    border-bottom: 1px solid #d9d9d9;
+                    padding-right: 90px;
+                    position: relative;
+                    .saved-tip{
+                        position: absolute;
+                        right: 100px;
+                        top: -30px;
+                        background-color: #4094c7;
+                        color: white;
+                        border-radius: 3px;
+                        padding: 2px 6px;
+                        font-size: 12px;
+                        font-weight: normal;
+                        display: none;
+                    }
+                    li{
+                        cursor: pointer;
+                        text-align: center;
+                        line-height: 30px;
+                        width: 30px;
+                        margin-right: 20px;
+                        .icon-column,.icon-save,.icon-display{
+                            font-size: 22px;
+                        }
+                    }
+                }
+                textarea{
+                    width: 100%;
+                    height: 100%;
+                    padding: 30px 30px 0;
+                    margin-bottom: 0;
+                    resize: none;
+                    color: #2f2f2f;
+                    font-size: 18px;
+                    font-weight: normal;
+                    line-height: 30px;
+                    height: 605px;
+                }
+            }
+        }
+    }
+    @media (max-width: 768px) {
+        .aside,.middle,.main{
+            float: none;
+            width: 100%;
+        }
+    }
+}
+
+.move-box{
+    display: none;
+    z-index: 9999;
+    border:1px solid red;
+    position: fixed;
+    width:400px;
+    height:600px;
+    border-radius: 4px;
+    border:1px solid #ddd;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)!important;
+    background-color: #f2f2f2;
+    .header{
+        line-height: 40px;
+        background-color: #e5e6e9;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+        text-align: center;
+        .icon-form-close{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    }
+    .file-info{
+        margin: 20px 0 10px 0;
+        .iconfont{
+            font-size: 30px;
+        }
+        .file-txt{
+            font-size: 14px;
+            vertical-align: top;
+        }
+    }
+    .content{
+        background-color:#ffffff;
+        border-radius: inherit;
+        position: absolute;
+        width: 90%;
+        left: 5%;
+        .icon-folder{
+            padding: 0;
+        }
+        .cont-header{
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+        .cont-display{
+            padding: 5px;
+            height: 370px;
+            overflow: scroll;
+            ul.move-list{
+                list-style: none;
+                .list-item{
+                    cursor: pointer;
+                    padding: 0 10px;
+                    .item{
+                        .a-wrapper{
+
+                        }
+                        &.active{
+                            background-color: #e78170;
+                            color:white;
+                            .iconfont,.note-name{
+                                color:white;
+                            }
+                        }
+                    }
+                    ul.sub-move-list{
+                        padding: 0;
+                        list-style: none;
+                        .list-item{
+                            padding-left: 15px;
+                            .item{
+                                .a-wrapper{
+
+                                }
+                                &.active{
+                                    background-color: #e78170;
+                                    color:white;
+                                    .iconfont,.note-name{
+                                        color:white;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+    .move-btns{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: right;
+        padding: 30px;
+        .confirm{
+            &.disabled{
+                background-color: #999;
+                border:none;
+            }
+        }
+    }
+}
+.move-mask{
+    position: fixed;
+    z-index: 9998;
+    height: 100%;
+    opacity: 0.95;
+    width: 100%;
+    display: none;
+    left: 0;
+    top:0;
+}
+
+.noty-box{
+    z-index: 9999;
+    position: fixed;
+    width: 310px;
+    left: 274px;
+    top: 287.5px;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    background-color: white;
+    display: none;
+    .noty-msg{
+        font-size: 13px;
+        text-align: center;
+        padding: 30px;
+    }
+    .noty-btns{
+        padding: 10px;
+        text-align: right;
+        border-top: 1px solid rgb(204, 204, 204);
+        background-color: rgb(245, 245, 245);
+    }
+}
+.noty-mask{
+    position: fixed;
+    z-index: 9998;
+    height: 100%;
+    opacity: 0.95;
+    width: 100%;
+    display: none;
+    left: 0;
+    top:0;
+}
+
+body.theme-fudan{
+    button.new,button.newfolder,button.newfile{
+        background:#e6e6e6 url(/assets/images/furley-bg.png);
+    }
+    .note-form{
+        .title{
+            background:#e6e6e6 url(/assets/images/furley-bg.png);
+        }
+        textarea{
+            background:#e6e6e6 url(/assets/images/furley-bg.png);
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .middle{
+        margin-top: 30px;
+        border-top:3px dotted #ddd;
+        border-bottom:3px dotted #ddd;
+    }
+}

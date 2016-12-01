@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Note Detail</title>
+    <link rel="stylesheet" href="/assets/css/notedetail.css">
+    <script src="/assets/js/lib/marked.min.js"></script>
+    <script src="/assets/js/lib/jquery-3.1.1.min.js"></script>
+    <script src="/assets/js/lib/template.min.js"></script>
+    <script src="/assets/minjs/common.min.js"></script>
+</head>
+<body>
+    <header>
+        <a href="/" class="home">
+            <i class="iconfont icon-home"></i>
+        </a>
+        <div class="nav-wrapper">
+            <ul class="m-title-list clearfix">
+                <li class="small-device">
+                  <i class="iconfont icon-menu"></i>
+                  <ul></ul>
+                </li>
+                <li class="compose"><a href="/notes/edit.html" class="iconfont icon-compose">笔记</a></li>
+                <li class="upload"><a href="/drive" class="iconfont icon-upload">云盘</a></li>
+                <li class="resume"><a href="/resume" class="iconfont icon-resume">简历</a></li>
+                <li class="theme">
+                    <a href="javascript:(0)" class="iconfont icon-theme">主题</a>
+                    <ul class="theme-choose-box">
+                        <li class="fudan"><span class="iconfont icon-dagou"><span class="txt">鹅蛋青</span></span></li>
+                        <li class="mianzhi"><span class="iconfont"><span class="txt">白色</span></span></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <section class="m-container">
+        <div class="m-note">
+            <section class="m-preview" >
+                <h1 class="title">
+                    <a class="iconfont icon-compose">
+                    编辑</a>
+                </h1>
+                <div class="note-info-txt"></div>
+                <div class="content" id="output"></div>
+            </section>
+        </div>
+    </section>
+    <section class="like">
+        <span class="txt">like this article</span>
+        <button class="iconfont icon-like"></button>
+    </section>
+    <!-- DISQUS BEGIN -->
+    <section class="comment-box">
+        <div id="disqus_thread"></div>
+            <script>
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+            /*
+            var disqus_config = function () {
+            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            */
+            (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = '//hukeblog-xxx.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    </section>
+    <!-- DISQUS END -->
+    <footer>
+        <section class="m-contact-me">
+            CONTACT ME &nbsp;&nbsp;&nbsp;
+            <a href="https://github.com/hu-ke" class="iconfont icon-github"></a>
+            <a href="http://sg.linkedin.com/pub/ke-hu/10a/34a/832" class="iconfont icon-linkedin">
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100008908393907" class="iconfont icon-Facebook"></a>
+            <a href="mailto:hu-ke@hotmail.com" class="iconfont icon-email"></a>
+            <a href="tel:13616512778" class="iconfont icon-mobile"></a>
+            <span class="iconfont icon-qq">
+                <div class="icon-box">
+                    <img src="/assets/images/qr-qq.png" alt="">
+                </div>
+            </span>
+            <span class="iconfont icon-weixin">
+                <div class="icon-box">
+                    <img src="/assets/images/qr-wechat.png" alt="">
+                </div>
+            </span>
+        </section>
+        <section class="m-copyright">
+            <a style="color:#545454;text-decoration: none;" href="http://www.miitbeian.gov.cn/">浙ICP备16043253号</a>  &nbsp;&nbsp;&nbsp; © 2016 Hu Ke.
+        </section>
+    </footer>
+</body>
+
+
+<script type="text/html" id = 'tpl-note-info'>
+    <div class="path-tag">
+        分类：
+        {{if path2 && path2.length > 0}}
+            <a href="/notes/notelist.html?folderId={{path2[0].noteId}}">
+                {{path2[0].title}}
+            </a>
+            <a href="/notes/notelist.html?folderId={{path2[0].noteId}}#{{path2[1].noteId}}">
+                {{path2[1].title}}
+            </a>
+        {{else}}
+            无
+        {{/if}}
+    </div>
+    <div class="clearfix">
+        <div class="count-wrapper g-fl">
+            评论
+            <a class="disqus-comment-count" href="/notes/notedetail.html?fileId={{noteId}}#disqus_thread"></a>
+            <span class="wordage">字数{{wordage}}</span>
+            <span class="views-count">阅读{{viewsCount}}</span>
+            <span class="likes-count">喜欢{{likesCount}}</span>
+        </div>
+        <div class="date g-fr">
+            <span class="created-date">创建于{{createdDate2}}</span>
+            <span class="last-modified-date">修改于{{lastModifiedDate2}}</span>
+        </div>
+    </div>
+</script>
+<!-- for PC -->
+<script type="text/html" id = "tpl-nav">
+    {{each notes as value i}}
+    <li class="note-item" data-index="{{i}}">
+        <a href="/notes/notelist.html?folderId={{value.noteId}}">{{value.title}}</a>
+    </li>
+    {{/each}}
+</script>
+<!-- for small device -->
+<script type="text/html" id = "tpl-nav-small">
+    {{each notes as value i}}
+    <li data-index="{{i}}" data-url="/notes/notelist.html?folderId={{value.noteId}}">
+        <a>{{value.title}}</a>
+    </li>
+    {{/each}}
+</script>
+<script type="text/html" id="tpl-box-wrapper">
+    <div class="box-wrapper">
+    {{each notes as v k}}
+        <div class="box" data-index={{k}}>
+            <div class="sec-wrapper g-fl">
+                {{each v.notes as value i}}
+                <section class="g-fl col-4">
+                    <h4><a href="/notes/notelist.html?folderId={{v.noteId}}#{{value.noteId}}">{{value.title}}</a></h4>
+                    {{each value.notes as v1 i1}}
+                        <a href="/notes/notedetail.html?fileId={{v1.noteId}}">{{v1.title}}</a>
+                    {{/each}}
+                    <!--如果一列达到上限11个 -->
+                    {{if value.notes.length == 11}}
+                    <a class="more" href="/notes/notelist.html?folderId={{v.noteId}}#{{value.noteId}}">查看更多 >></a>
+                    {{/if}}
+                </section>
+                {{/each}}
+            </div>
+            <div class="more-col g-fl">
+                <a href="/notes/notelist.html?folderId={{v.noteId}}">
+                更多分类</a>
+            </div>
+        </div>
+    {{/each}}
+    </div>
+</script>
+<script src="/assets/minjs/header.min.js"></script>
+<script src="/assets/minjs/footer.min.js"></script>
+<script src="/assets/minjs/notedetail.min.js"></script>
+</html>

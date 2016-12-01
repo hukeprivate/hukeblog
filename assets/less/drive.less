@@ -1,0 +1,105 @@
+@import 'iconfont.less';
+@import 'helper/_variable.less';
+@import 'helper/_mixin.less';
+@import 'component/_button.less';
+@import 'common.less';
+@import 'layout.less';
+
+.main-wrapper{
+    width: 82%;
+    margin: 0 auto;
+    margin-top: 80px;
+    .toolbar{
+        padding: 0 40px 10px;
+        width: 100%;
+        button.btn-info{
+            margin-left: 20px;
+        }
+        margin-bottom: 20px;
+    }
+    .files-area{
+        padding: 0 40px 10px;
+        width: 100%;
+        ul.file-list{
+            margin: 0;padding: 0;
+            list-style: none;
+            li.file-item{
+                cursor: pointer;
+                line-height: 46px;
+                margin-right: 60px;
+                margin-bottom: 10px;
+                text-align: center;
+                position: relative;
+                width: 100px;
+                .icon{
+                    width: 3em; height: 3em;
+                    vertical-align: -0.15em;
+                    fill: currentColor;
+                    overflow: hidden;
+                }
+                .icon-close{
+                    display: none;
+                    font-size: 20px;
+                    color:@primary;
+                    position: absolute;
+                    right: -20px;
+                    top:-20px;
+                    &.active{
+                        display: block;
+                    }
+                }
+                .txt{
+                    display: block;
+                    padding: 0;
+                    line-height: 20px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    .upload-area{
+        padding: 0 40px 10px;
+        width: 100%;
+    }
+
+
+
+
+
+    .iconfont{
+        font-size: 40px;
+    }
+    .icon-zip{
+        color: #1d87be;
+    }
+    .icon-file{
+        color:rgb(128,128,128);
+    }
+}
+body{
+    margin-bottom:50px;
+}
+
+footer{
+    position:fixed;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    margin-bottom:0px;
+}
+
+@media (max-width: 768px) {
+    .main-wrapper{
+        .files-area{
+            padding: 0 0 0 30px;
+            ul.file-list{
+                li.file-item{
+                    width: 70px;
+                }
+            }
+        }
+        .upload-area{
+            padding: 0 0 0 30px;
+        }
+    }
+}

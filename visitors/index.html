@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>胡柯 - 访客记录</title>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="bookmark" href="/favicon.ico"/>
+    <!-- CSS goes in the document HEAD or added to your external stylesheet -->
+    <style type="text/css">
+    table {
+        font-family: verdana,arial,sans-serif;
+        font-size:11px;
+        color:#333333;
+        border-width: 1px;
+        border-color: #999999;
+        border-collapse: collapse;
+    }
+    table th {
+        background:#b5cfd2;
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #999999;
+    }
+    table td {
+        background:#dcddc0;
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #999999;
+    }
+    </style>
+    <script src="/assets/js/lib/template.min.js"></script>
+    <script src="/assets/js/lib/jquery-3.1.1.min.js"></script>
+    <script src="/assets/minjs/common.min.js"></script>
+</head>
+<body>
+
+</body>
+<script type="text/html" id="tpl-visitors">
+    <table>
+        <th>
+            <td>visitor_id</td><td>ip</td><td>first_visited_date</td><td>last_visited_date</td><td>visited_count</td><td>isp</td><td>isp_id</td><td>country</td><td>country_id</td><td>area</td><td>area_id</td><td>city</td><td>city_id</td><td>region</td><td>region_id</td><td>county</td><td>county_id</td>
+        </th>
+        {{each visitors as visitor i}}
+        <tr>
+            <td></td>
+            <td>{{visitor.visitorId}}</td>
+            <td>{{visitor.ip}}</td>
+            <td>{{visitor.firstDateLabel}}</td>
+            <td>{{visitor.lastDateLabel}}</td>
+            <td>{{visitor.visitedCount}}</td>
+            <td>{{visitor.isp}}</td>
+            <td>{{visitor.ispId}}</td>
+            <td>{{visitor.country}}</td>
+            <td>{{visitor.countryId}}</td>
+            <td>{{visitor.area}}</td>
+            <td>{{visitor.areaId}}</td>
+            <td>{{visitor.city}}</td>
+            <td>{{visitor.cityId}}</td>
+            <td>{{visitor.region}}</td>
+            <td>{{visitor.regionId}}</td>
+            <td>{{visitor.county}}</td>
+            <td>{{visitor.countyId}}</td>
+        </tr>
+        {{/each}}
+    </table>
+</script>
+<script>
+function Index() {
+    if (!(this instanceof Index)) {
+        return new Index();
+    }
+    this.init();
+}
+var TimeUtils = $.getTimeUtils();
+
+
+Index.prototype = {
+    init: function(){
+        this.fetchVisitorList()
+    },
+    prcsResTime : function (res){
+        $.each(res.visitors,function(index,value){
+            value.firstDateLabel = TimeUtils.getLabelByTimestamp(value.firstVisitedDate).toUpperCase()
+
+            value.lastDateLabel = TimeUtils.getLabelByTimestamp(value.lastVisitedDate).toUpperCase()
+        })
+    },
+    fetchVisitorList : function(){
+        var self = this
+        $.hkAjax('get','/visitors/',{
+        },function(res){
+            console.log('res:',res)
+            self.prcsResTime(res)
+            var html = template('tpl-visitors',res)
+            $('body').append(html)
+        })
+    },
+};
+
+Object.defineProperty(Index.prototype, 'constructor', {
+    enumerable: false,
+    value: Index
+});
+
+$(function() {
+    new Index();
+});
+
+</script>
+</html>

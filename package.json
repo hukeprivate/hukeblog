@@ -1,0 +1,35 @@
+{
+  "name": "huke'sblog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hu-ke/hukeblog.git"
+  },
+  "keywords": [
+    "blog"
+  ],
+  "author": "huke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hu-ke/hukeblog/issues"
+  },
+  "homepage": "https://github.com/hu-ke/hukeblog#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-less": "^3.1.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.0",
+    "run-sequence": "^1.2.2"
+  }
+}

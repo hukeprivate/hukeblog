@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Login Page</title>
+    <script src="/assets/js/lib/jquery-3.1.1.min.js"></script>
+    <script src="/assets/minjs/common.min.js"></script>
+</head>
+<body>
+    <input id="username" type="text"/>
+    <input id="password" type="text"/>
+    <button id="login">login</button>
+
+    <!-- <button id="post-btn">Post</button> -->
+</body>
+<script>
+    $(document).ready(function(){
+        $uname = $('#username')
+        $pwd = $('#password')
+
+        $('#login').click(function(){
+            $.ajax({
+                url: 'http://kenote.me:8080/hukeblog/login' ,
+                type: 'POST',
+                data: {
+                    username : $uname.val(),
+                    password : $pwd.val()
+                },
+                success: function (res) {
+                    alert('login successfully');
+                    console.log('login res:',res)
+                    $.setCookie('token',res.token,7)
+                    location.href = '/'
+                },
+                error: function (res) {
+                    console.log('error res:',res)
+                }
+            });
+        })
+    })
+</script>
+</html>

@@ -1,0 +1,107 @@
+@import 'base/reset.less';
+@import 'iconfont.less';
+@import 'markdown-reset.less';
+@import 'common.less';
+@import 'layout.less';
+@import 'helper/_variable.less';
+@import 'solarized-light.less';
+
+header{
+    a{
+        color:black;
+        font-weight: normal;
+    }
+    span{
+        font-weight: normal;
+    }
+}
+
+.m-container{
+    width: 82%;
+    margin: 0 auto;
+    .m-note{
+        padding: 80px 40px 10px;
+        font-size: 14px;
+        line-height: 20px;
+        color: #555555;
+        .title{
+            margin-bottom: 20px;
+            .icon-compose{
+                float:right;
+                font-weight: normal;
+            }
+        }
+        .path-tag{
+            margin-bottom: 20px;
+            a{
+                padding-right: 20px;
+            }
+        }
+        .count-wrapper{
+            color: #999;
+            a,span{
+                margin-right: 24px;
+            }
+        }
+        .date{
+            color: #999;
+            span{
+                margin-right: 24px;
+            }
+        }
+        .content{
+            margin-top: 20px;
+            img{
+                display:block;
+                margin:0 auto;
+            }
+        }
+    }
+}
+.like{
+    width: 76%;
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 20px;
+    .txt{
+        color: #e78170;
+    }
+    .icon-like{
+        color:#656c7a;
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: transparent;
+        &.red{
+            color:@primary-light;
+        }
+    }
+}
+
+.comment-box{
+    width: 76%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+
+@media (max-width: 768px) {
+    .m-container{
+        width: 100%;
+    }
+}
+@media (max-width:920px){
+    .m-container{
+        .m-note{
+            .count-wrapper{
+                float: none;
+            }
+            .date{
+                float: none;
+                .created-date,.last-modified-date{
+                    display: block;
+                    text-align: left;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,124 @@
+// button
+.button {
+    text-align: center;
+    border: 0 none;
+    display: inline-block;
+    padding: 0 10px;
+    line-height: 30px;
+    // button-background-color
+    &.button-primary {
+        border: 1px solid @primary;
+        background-color: @primary;
+        color: #fff;
+    }
+    &.button-balanced {
+        border: 1px solid @balanced;
+        background-color: @balanced;
+        color: #fff;
+    }
+    &.button-primary-dark {
+        border: 1px solid @primary-dark;
+        background-color: @primary-dark;
+        color: #fff;
+    }
+    &.button-orange {
+        border: 1px solid @orange;
+        background-color: @orange;
+        color: #fff;
+    }
+    &.button-gray{
+        border: 1px solid @border-color;
+        background-color: @border-color;
+    }
+    &.button-white {
+        border: 1px solid @border-color;
+        background-color: @white;
+        color: @text;
+    }
+    &.button-default {
+        border: 1px solid #f0f0f0;
+        background-color: #f0f0f0;
+        color: @text-gray;
+    }
+    // button-has-border
+    &.button-border-primary {
+        border: 1px solid @primary;
+        background-color: #fff;
+        color: @primary;
+    }
+    &.button-border-balanced {
+        border: 1px solid @balanced;
+        background-color: #fff;
+        color: @balanced;
+    }
+    &.button-border-default {
+        border: 1px solid @border-color;
+        background-color: #fff;
+        color: @text-gray;
+    }
+    &.button-clear {
+        border: 0 none;
+        background-color: transparent;
+    }
+    // border-radius-size
+    &.button-radius-lg {
+        .border-radius(10px);
+    }
+    &.button-radius-md {
+        .border-radius(5px);
+    }
+    &.button-radius-sm {
+        .border-radius(3px);
+    }
+    &.button-radius-half {
+        .border-radius(20px);
+    }
+    // button-size
+    &.button-lg {
+        .font-size-md;
+        padding:7px 15px;
+        .font-size-lg;
+    }
+    &.button-md {
+        padding: 5px 15px;
+        .font-size-md;
+    }
+    &.button-sm {
+        line-height: 28px;
+    }
+    // button-block
+    &.button-full {
+        width: 100%;
+        display: block;
+    }
+    &.disabled {
+        background-color: #ddd !important;
+        color: @text-gray-light !important;
+        border-color: #ddd !important;
+    }
+}
+
+.btn{
+    border-radius: 4px;
+    box-shadow: none;
+    color: #555555;
+    border-color: whitesmoke;
+    background: whitesmoke;
+    border-color: #d5d5d5;
+    text-shadow: none;
+
+    border: 1px solid #cccccc;
+    display: inline-block;
+    padding: 4px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    &.btn-info{
+        color: white;
+        border-color: #15a7f0;
+        background: #15a7f0;
+    }
+}
