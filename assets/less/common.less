@@ -524,31 +524,63 @@ body.theme-fudan{
 .pa{
     position: absolute;
 }
+// #loading{
+//     left: 0;
+//     top: 0;
+//     bottom: 0;
+//     right: 0;
+//     // background-color: #f6f9f7;
+//     background-color: #fff;
+//     z-index: 10;
+//     // opacity: 0.8;
+//     span{
+//         left: 50%;
+//         top: 50%;
+//         -webkit-transform: translate3d(-50%,-50%,0);
+//         transform: translate3d(-50%,-50%,0);
+//     }
+//     .v-beat{
+//         -webkit-animation: v-beatStretchDelay .7s infinite linear;
+//         animation: v-beatStretchDelay .7s infinite linear;
+//         -webkit-animation-fill-mode: both;
+//         animation-fill-mode: both;
+//         display: inline-block;
+//         width: 10px;
+//         height: 10px;
+//         background-color: #4ba96a;
+//         border-radius: 50%;
+//     }
+//     .v-beat-odd {
+//         -webkit-animation-delay: 0s;
+//         animation-delay: 0s;
+//     }
+//     .v-beat-even {
+//         -webkit-animation-delay: .35s;
+//         animation-delay: .35s;
+//     }
+//     @-webkit-keyframes v-beatStretchDelay{50%{-webkit-transform:scale(.75);transform:scale(.75);-webkit-opacity:.2;opacity:.2}to{-webkit-transform:scale(1);transform:scale(1);-webkit-opacity:1;opacity:1}}@keyframes v-beatStretchDelay{50%{-webkit-transform:scale(.75);transform:scale(.75);-webkit-opacity:.2;opacity:.2}to{-webkit-transform:scale(1);transform:scale(1);-webkit-opacity:1;opacity:1}}
+// }
 #loading{
     left: 0;
     top: 0;
     bottom: 0;
     right: 0;
-    // background-color: #f6f9f7;
     background-color: #fff;
     z-index: 10;
-    // opacity: 0.8;
     span{
         left: 50%;
         top: 50%;
-        -webkit-transform: translate3d(-50%,-50%,0);
-        transform: translate3d(-50%,-50%,0);
     }
     .v-beat{
-        -webkit-animation: v-beatStretchDelay .7s infinite linear;
-        animation: v-beatStretchDelay .7s infinite linear;
-        -webkit-animation-fill-mode: both;
-        animation-fill-mode: both;
         display: inline-block;
-        width: 10px;
-        height: 10px;
-        background-color: #4ba96a;
+        width:10px;
+        height:10px;
         border-radius: 50%;
+        background-color: #4ba96a;
+        -webkit-animation: beat 0.7s infinite linear;
+                animation: beat 0.7s infinite linear;
+        -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
     }
     .v-beat-odd {
         -webkit-animation-delay: 0s;
@@ -558,5 +590,26 @@ body.theme-fudan{
         -webkit-animation-delay: .35s;
         animation-delay: .35s;
     }
-    @-webkit-keyframes v-beatStretchDelay{50%{-webkit-transform:scale(.75);transform:scale(.75);-webkit-opacity:.2;opacity:.2}to{-webkit-transform:scale(1);transform:scale(1);-webkit-opacity:1;opacity:1}}@keyframes v-beatStretchDelay{50%{-webkit-transform:scale(.75);transform:scale(.75);-webkit-opacity:.2;opacity:.2}to{-webkit-transform:scale(1);transform:scale(1);-webkit-opacity:1;opacity:1}}
+
+
+    @-webkit-keyframes beat{
+            50%{
+                -webkit-transform: scale(0.75);
+                opacity: 0.2;
+            }
+            100%{
+                -webkit-transform: scale(1);
+                        opacity: 1;
+            }
+    }
+    @keyframes beat{
+       50%{
+           transform: scale(0.75);
+               opacity: 0.2;
+      }
+      100%{
+          transform: scale(1);
+               opacity: 1;
+        }
+    }
 }
