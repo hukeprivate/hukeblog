@@ -53,7 +53,7 @@ Notedetail.prototype = {
                 array.push(obj)
             }
         }
-        return array;
+        return array.reverse();
     },
     addDate2: function(res){
         res.createdDate2 = TimeUtils.getDateByTimeStampWithDash(res.createdDate)
